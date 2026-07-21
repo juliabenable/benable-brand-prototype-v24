@@ -1,0 +1,108 @@
+/* =========================================================================
+   Second-campaign moment — STAGES study.
+   D (drafted-for-you) lives in the main-screen hero slot and evolves
+   through lifecycle stages; G (takeover) fires once when it unlocks.
+   Prefix: scst-
+   ========================================================================= */
+
+/* ---- main-screen context frame (mimics the campaigns list) ---- */
+.scst-screen {
+  background: #fbfafd; border-radius: 18px; border: 1px solid rgba(30, 20, 60, 0.08);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.35); padding: 22px 26px 24px;
+  font-family: 'Inter', system-ui, sans-serif; color: #1c1c1c;
+}
+.scst-screen__head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.scst-screen__logo { width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg, #7a5cfa, #b05ce0); }
+.scst-screen__brand { font-size: 14px; font-weight: 800; color: #1d1730; letter-spacing: -0.01em; }
+.scst-screen__nav { margin-left: 18px; display: flex; gap: 14px; font-size: 12px; font-weight: 600; color: #9a93ab; }
+.scst-screen__nav b { color: #6a5acd; }
+
+/* table ghost below the hero */
+.scst-table { margin-top: 16px; }
+.scst-table__t { font-size: 13.5px; font-weight: 700; color: #1d1730; margin-bottom: 8px; }
+.scst-trow { display: flex; align-items: center; gap: 12px; padding: 9px 12px; border-radius: 9px; background: #f4f2f9; margin-bottom: 7px; }
+.scst-trow span { height: 8px; border-radius: 4px; background: #e2ddef; display: inline-block; }
+.scst-trow .scst-pill { height: auto; font-size: 9.5px; font-weight: 700; padding: 3px 8px; border-radius: 99px; background: #e3f4ea; color: #2e7d54; margin-left: auto; }
+
+/* ---- the hero-slot banner ---- */
+.scst-hero {
+  border-radius: 15px; padding: 20px 22px; display: flex; gap: 20px; align-items: stretch;
+  background: linear-gradient(115deg, #f4f0ff 0%, #fdf3fb 70%, #fff 100%);
+  border: 1px solid rgba(122, 92, 250, 0.16); position: relative; overflow: hidden;
+}
+.scst-hero__copy { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.scst-hero__kicker { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8a6cf0; display: flex; align-items: center; gap: 6px; }
+.scst-hero__kicker .dot { width: 7px; height: 7px; border-radius: 50%; background: #8a6cf0; }
+.scst-hero__kicker .dot--live { background: #e0619b; animation: scst-blink 1.6s ease-in-out infinite; }
+@keyframes scst-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.scst-hero__t { font-size: 21px; font-weight: 800; letter-spacing: -0.015em; color: #1d1730; margin-top: 6px; }
+.scst-hero__d { font-size: 13.5px; color: #6b6580; margin-top: 5px; line-height: 1.55; max-width: 460px; }
+.scst-hero__actions { margin-top: auto; padding-top: 14px; display: flex; align-items: center; gap: 12px; }
+.scst-hero__hint { font-size: 12px; color: #9a93ab; }
+
+/* warm-window variant */
+.scst-hero--warm { background: linear-gradient(115deg, #fff4ec 0%, #fdf0f6 55%, #fff 100%); border-color: rgba(240, 130, 90, 0.25); }
+.scst-hero--warm .scst-hero__kicker { color: #d0663a; }
+.scst-hero--warm .scst-hero__kicker .dot { background: #d0663a; }
+/* cooled variant */
+.scst-hero--cool { background: #f7f6fa; border-color: rgba(30, 20, 60, 0.1); }
+.scst-hero--cool .scst-hero__kicker { color: #9a93ab; }
+.scst-hero--cool .scst-hero__kicker .dot { background: #b1a8cc; }
+
+/* ---- the draft ticket (the evolving object) ---- */
+.scst-ticket {
+  flex: 0 0 236px; border-radius: 13px; padding: 15px 16px; color: #fff; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #7a5cfa, #b05ce0);
+  box-shadow: 0 14px 30px rgba(122, 92, 250, 0.3);
+}
+.scst-ticket--ghost { background: linear-gradient(135deg, #cdc3f2, #ddc8ea); box-shadow: none; }
+.scst-ticket--dim { filter: saturate(0.55); opacity: 0.85; box-shadow: none; }
+.scst-ticket--ready { box-shadow: 0 0 0 3px rgba(122, 92, 250, 0.25), 0 18px 38px rgba(122, 92, 250, 0.42); }
+.scst-ticket__tag { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; display: flex; align-items: center; gap: 6px; }
+.scst-ticket__ready { background: #ffe08a; color: #6b4c00; border-radius: 99px; padding: 2px 8px; letter-spacing: 0.08em; }
+.scst-ticket__name { font-size: 15.5px; font-weight: 800; margin-top: 5px; letter-spacing: -0.01em; }
+.scst-ticket__name--tbd { opacity: 0.6; font-style: italic; }
+.scst-ticket__rows { margin-top: 10px; display: grid; gap: 6px; }
+.scst-ticket__row { display: flex; align-items: center; gap: 7px; font-size: 11px; line-height: 1.4; opacity: 0.95; }
+.scst-ticket__row--empty { opacity: 0.5; }
+.scst-ticket__row .ic { flex: 0 0 14px; text-align: center; }
+.scst-ticket__slot { flex: 1; height: 7px; border-radius: 4px; background: rgba(255, 255, 255, 0.28); position: relative; overflow: hidden; }
+.scst-ticket__slot::after {
+  content: ''; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  animation: scst-shimmer 2.2s ease-in-out infinite;
+}
+@keyframes scst-shimmer { 60%, 100% { transform: translateX(100%); } }
+.scst-ticket__avs { display: flex; margin-top: 2px; }
+.scst-ticket__av {
+  width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font: 700 10px 'Inter', sans-serif; color: #fff; box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.65);
+}
+.scst-ticket__av + .scst-ticket__av { margin-left: -6px; }
+.scst-ticket__av--empty { background: rgba(255, 255, 255, 0.25); box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.35); color: rgba(255, 255, 255, 0.7); }
+.scst-ticket__lock {
+  position: absolute; right: 12px; bottom: 11px; font-size: 10px; font-weight: 700;
+  background: rgba(0, 0, 0, 0.22); border-radius: 99px; padding: 4px 9px; letter-spacing: 0.04em;
+}
+
+/* warm meter strip (stage 4) */
+.scst-warmstrip { display: flex; align-items: center; gap: 9px; margin-top: 11px; }
+.scst-warmstrip .scs-meter { flex: 1; height: 7px; }
+.scst-warmstrip .scs-meter__dot { width: 15px; height: 15px; border-width: 2.5px; }
+.scst-warmstrip small { font-size: 11px; font-weight: 700; color: #d0663a; white-space: nowrap; }
+
+/* ---- stage rail (overview diagram) ---- */
+.scst-rail { display: flex; align-items: flex-start; margin: 6px 0 8px; }
+.scst-rail__node { flex: 1; text-align: center; position: relative; padding: 0 6px; }
+.scst-rail__dot {
+  width: 38px; height: 38px; border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center;
+  justify-content: center; font-size: 15px; font-weight: 800; background: #2a2440; color: #b69cff;
+  border: 2px solid rgba(182, 156, 255, 0.35);
+}
+.scst-rail__dot--hot { background: #7a5cfa; color: #fff; border-color: #7a5cfa; box-shadow: 0 0 22px rgba(122, 92, 250, 0.55); }
+.scst-rail__t { font-size: 12.5px; font-weight: 700; color: #fff; }
+.scst-rail__d { font-size: 11px; color: rgba(255, 255, 255, 0.55); margin-top: 3px; line-height: 1.45; }
+.scst-rail__link { flex: 0 0 26px; height: 2px; background: rgba(182, 156, 255, 0.3); margin-top: 19px; }
+
+/* takeover reveal tweaks (reuses scs-takeover) */
+.scst-reveal-ticket { margin: 0 auto 20px; flex: none; width: 216px; text-align: left; }

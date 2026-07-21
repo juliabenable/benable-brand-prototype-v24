@@ -14,6 +14,7 @@ import BannerStudy from './pages/BannerStudy.jsx';
 import ContentRevealStudy from './pages/ContentRevealStudy.jsx';
 import ContentCountStudy from './pages/ContentCountStudy.jsx';
 import SecondCampaignStudy from './pages/SecondCampaignStudy.jsx';
+import SecondCampaignStagesStudy from './pages/SecondCampaignStagesStudy.jsx';
 import WrapReview from './pages/WrapReview.jsx';
 import GlowLoveWrap from './components/glowlove/GlowLoveWrap.jsx';
 import WrapPage from './pages/WrapPage.jsx';
@@ -50,6 +51,7 @@ export default function App() {
       <Route path="/content-reveal-study" element={<ContentRevealStudy />} />
       <Route path="/content-count-study" element={<ContentCountStudy />} />
       <Route path="/second-campaign-study" element={<SecondCampaignStudy />} />
+      <Route path="/second-campaign-stages" element={<SecondCampaignStagesStudy />} />
       <Route path="/wrap-review" element={<WrapReview />} />
       <Route path="/wrap-review/:topic" element={<WrapReview />} />
       {/* Wrap embedded in the brand-portal shell (sidebar + header). */}
